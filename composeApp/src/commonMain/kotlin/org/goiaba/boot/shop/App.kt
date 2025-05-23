@@ -17,6 +17,9 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import bootsshop.composeapp.generated.resources.Res
 import bootsshop.composeapp.generated.resources.compose_multiplatform
+import com.mmk.kmpauth.google.GoogleAuthCredentials
+import com.mmk.kmpauth.google.GoogleAuthProvider
+import org.goiaba.boots.shop.shared.Constants
 
 @Composable
 @Preview
@@ -26,7 +29,17 @@ fun App() {
         var appReady by remember { mutableStateOf(false) }
 
         LaunchedEffect(Unit) {
+            GoogleAuthProvider.create(
+                credentials = GoogleAuthCredentials(serverId = Constants.WEB_CLIENT_ID)
+            )
             appReady = true
+        }
+
+        AnimatedVisibility(
+            modifier = Modifier.fillMaxSize(),
+            visible = appReady
+        ) {
+
         }
 
         Column(

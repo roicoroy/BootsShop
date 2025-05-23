@@ -10,17 +10,17 @@ import kotlinx.coroutines.launch
 class AuthViewModel(
 //    private val customerRepository: CustomerRepository,
 ) : ViewModel() {
-//    fun createCustomer(
-//        user: FirebaseUser?,
-//        onSuccess: () -> Unit,
-//        onError: (String) -> Unit,
-//    ) {
-//       viewModelScope.launch(Dispatchers.IO) {
+    fun createCustomer(
+        user: FirebaseUser?,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit,
+    ) {
+       viewModelScope.launch(Dispatchers.IO) {
 //           customerRepository.createCustomer(
 //               user = user,
 //               onSuccess = onSuccess,
 //               onError = onError
 //           )
-//       }
-//    }
+       }
+    }
 }
