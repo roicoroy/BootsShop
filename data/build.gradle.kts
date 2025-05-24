@@ -21,19 +21,12 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "shared"
+            baseName = "data"
             isStatic = true
         }
     }
 
     sourceSets {
-        androidMain.dependencies {
-            implementation(libs.androidx.activity.compose)
-            implementation(libs.ktor.android.client)
-        }
-        iosMain.dependencies {
-            implementation(libs.ktor.darwin.client)
-        }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -44,26 +37,18 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
-            implementation(libs.kotlinx.serialization)
+            implementation(libs.firebase.firestore)
+            implementation(libs.firebase.storage)
+            implementation(libs.auth.firebase.kmp)
 
-            implementation(libs.koin.core)
-            implementation(libs.koin.compose)
-
-            implementation(libs.multiplatform.settings)
-            implementation(libs.multiplatform.settings.no.arg)
-            implementation(libs.multiplatform.settings.make.observable)
-
-            implementation(libs.coil3)
-            implementation(libs.coil3.compose)
-            implementation(libs.coil3.compose.core)
-            implementation(libs.coil3.network.ktor)
+            implementation(project(path = ":shared"))
         }
     }
 }
 
 android {
-    namespace = "org.goiaba.boot.shop"
-    compileSdk = 35
+    namespace = "org.goiaba.boot.shop.data"
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
         minSdk = 35
         targetSdk = 35

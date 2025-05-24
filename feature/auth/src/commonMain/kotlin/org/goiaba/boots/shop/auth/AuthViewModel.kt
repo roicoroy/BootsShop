@@ -1,6 +1,12 @@
 package org.goiaba.boots.shop.auth
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import dev.gitlive.firebase.auth.FirebaseUser
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.goiaba.boots.shop.data.domain.CustomerRepository
+
 //import androidx.lifecycle.viewModelScope
 //import dev.gitlive.firebase.auth.FirebaseUser
 //import kotlinx.coroutines.Dispatchers
@@ -8,19 +14,19 @@ import androidx.lifecycle.ViewModel
 //import kotlinx.coroutines.launch
 
 class AuthViewModel(
-//    private val customerRepository: CustomerRepository,
+    private val customerRepository: CustomerRepository,
 ) : ViewModel() {
-//    fun createCustomer(
-//        user: FirebaseUser?,
-//        onSuccess: () -> Unit,
-//        onError: (String) -> Unit,
-//    ) {
-//       viewModelScope.launch(Dispatchers.IO) {
-////           customerRepository.createCustomer(
-////               user = user,
-////               onSuccess = onSuccess,
-////               onError = onError
-////           )
-//       }
-//    }
+    fun createCustomer(
+        user: FirebaseUser?,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit,
+    ) {
+       viewModelScope.launch(Dispatchers.IO) {
+           customerRepository.createCustomer(
+               user = user,
+               onSuccess = onSuccess,
+               onError = onError
+           )
+       }
+    }
 }

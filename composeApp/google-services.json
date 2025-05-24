@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "801350010963",
+    "project_id": "boots-shop",
+    "storage_bucket": "boots-shop.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:801350010963:android:1cedd8b03bbb73b2149ea6",
+        "android_client_info": {
+          "package_name": "org.goiaba.boot.shop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "801350010963-ggjd3fv3gii5ale2hn6a15ljmkhjja6e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpgScwUxVb9kwfb-WYUlqupDMnt6zNba0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "801350010963-ggjd3fv3gii5ale2hn6a15ljmkhjja6e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -11,7 +11,7 @@ plugins {
 kotlin {
     androidTarget {
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
+            jvmTarget.set(JvmTarget.JVM_17)
         }
     }
 
@@ -37,28 +37,27 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
-            implementation(libs.compose.navigation)
-            implementation(libs.kotlinx.serialization)
-
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
 
-            implementation(project(path = ":shared"))
-            implementation(project(path = ":feature:auth"))
+            implementation(project(":feature:auth"))
+            implementation(project(":data"))
+            implementation(project(":shared"))
         }
     }
 }
 
 android {
     namespace = "org.goiaba.boot.shop.di"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
-
+    compileSdk = 35
     defaultConfig {
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        minSdk = 35
+        targetSdk = 35
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
