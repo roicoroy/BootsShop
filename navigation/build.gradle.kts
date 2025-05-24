@@ -44,12 +44,13 @@ kotlin {
             implementation(libs.koin.compose)
 
             implementation(project(path = ":shared"))
+            implementation(project(path = ":feature:auth"))
         }
     }
 }
 
 android {
-    namespace = "org.goiaba.boot.shop"
+    namespace = "org.goiaba.boot.shop.navigation"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

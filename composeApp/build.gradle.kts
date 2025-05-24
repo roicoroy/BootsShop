@@ -55,6 +55,7 @@ kotlin {
 
             implementation(project(path = ":shared"))
             implementation(project(path = ":navigation"))
+            implementation(project(path = ":feature:auth"))
         }
     }
 }

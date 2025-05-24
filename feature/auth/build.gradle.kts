@@ -50,7 +50,7 @@ kotlin {
 }
 
 android {
-    namespace = "org.goiaba.boot.shop"
+    namespace = "org.goiaba.boot.shop.feature"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

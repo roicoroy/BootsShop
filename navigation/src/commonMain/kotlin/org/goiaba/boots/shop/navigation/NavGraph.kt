@@ -9,19 +9,22 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import org.koin.compose.koinInject
 import androidx.compose.runtime.getValue
+import org.goiaba.boots.shop.auth.AuthScreen
 import org.goiaba.boots.shop.shared.navigation.Screen
 
-
 @Composable
-fun SetupNavGraph(startDestination: Screen = Screen.Auth) {
-    val navController = rememberNavController()
-    NavHost(
-        navController = navController,
-        startDestination = startDestination
-    ) {
-        composable<Screen.Auth> {
-        }
-        composable<Screen.HomeGraph> {
-        }
-    }
+//startDestination: Screen = Screen.Auth
+fun SetupNavGraph() {
+    AuthScreen()
+
+//    val navController = rememberNavController()
+//    NavHost(
+//        navController = navController,
+//        startDestination = startDestination
+//    ) {
+//        composable<Screen.Auth> {
+//        }
+//        composable<Screen.HomeGraph> {
+//        }
+//    }
 }

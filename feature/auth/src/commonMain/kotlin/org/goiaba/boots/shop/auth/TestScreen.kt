@@ -10,21 +10,15 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import org.goiaba.boots.shop.auth.components.GoogleButton
-import org.koin.compose.viewmodel.koinViewModel
-import rememberMessageBarState
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.mmk.kmpauth.firebase.google.GoogleButtonUiContainerFirebase
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import org.goiaba.boots.shop.shared.Alpha
 import org.goiaba.boots.shop.shared.BebasNeueFont
 import org.goiaba.boots.shop.shared.FontSize
@@ -34,15 +28,19 @@ import org.goiaba.boots.shop.shared.SurfaceError
 import org.goiaba.boots.shop.shared.TextPrimary
 import org.goiaba.boots.shop.shared.TextSecondary
 import org.goiaba.boots.shop.shared.TextWhite
+import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.viewmodel.koinViewModel
+import rememberMessageBarState
 
 @Composable
-fun AuthScreen(
-//    navigateToHome: () -> Unit
+@Preview
+fun TestScreen(
+
 ) {
     val scope = rememberCoroutineScope()
 //    val viewModel = koinViewModel<AuthViewModel>()
     val messageBarState = rememberMessageBarState()
-    var loadingState by remember { mutableStateOf(true) }
+    var loadingState by remember { mutableStateOf(false) }
 
     Scaffold { padding ->
         ContentWithMessageBar(
@@ -87,51 +85,6 @@ fun AuthScreen(
                         color = TextPrimary
                     )
                 }
-
-                GoogleButton(
-                        loading = loadingState,
-                        onClick = {
-                            loadingState = true
-                        }
-                    )
-//                GoogleButtonUiContainerFirebase(
-//                    linkAccount = false,
-//                    onResult = { result ->
-//                        result
-//                            .onSuccess { user ->
-//                                viewModel.createCustomer(
-//                                user = user,
-//                                onSuccess = {
-//                                    scope.launch {
-//                                        messageBarState.addSuccess("Authentication successful!")
-//                                        delay(2000)
-//                                        navigateToHome()
-//                                    }
-//                                },
-//                                onError = { message -> messageBarState.addError(message) }
-//                            )
-//                            loadingState = false
-//                        }
-//                            .onFailure { error ->
-//                            if (error.message?.contains("A network error") == true) {
-//                                messageBarState.addError("Internet connection unavailable.")
-//                            } else if (error.message?.contains("Idtoken is null") == true) {
-//                                messageBarState.addError("Sign in canceled.")
-//                            } else {
-//                                messageBarState.addError(error.message ?: "Unknown")
-//                            }
-//                            loadingState = false
-//                        }
-//                    }
-//                ) {
-//                    GoogleButton(
-//                        loading = loadingState,
-//                        onClick = {
-//                            loadingState = true
-//                            this@GoogleButtonUiContainerFirebase.onClick()
-//                        }
-//                    )
-//                }
             }
         }
     }
