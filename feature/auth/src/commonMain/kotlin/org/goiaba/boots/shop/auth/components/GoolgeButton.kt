@@ -1,4 +1,4 @@
-package org.goiaba.boots.shop.auth.components
+package org.goiaba.boot.shop.auth.components
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateContentSize

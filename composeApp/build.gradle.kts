@@ -1,3 +1,4 @@
+import com.android.build.api.dsl.LintOptions
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -51,22 +52,32 @@ kotlin {
 
             api(libs.kmp.notifier)
 
+            implementation(project(path = ":navigation"))
             implementation(project(path = ":shared"))
             implementation(project(path = ":di"))
-            implementation(project(path = ":navigation"))
-            implementation(project(path = ":feature:auth"))
+            implementation(project(path = ":data"))
+
+//            implementation(project(path = ":feature:auth"))
         }
     }
 }
 
 android {
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("/Users/ricardobento/LOCAL/KOTLIN-MULTI/BootsShop/boots_shop.keystore")
+            storePassword = "Rwbento123!"
+            keyAlias = "boots_shop_alias"
+            keyPassword = "Rwbento123!"
+        }
+    }
     namespace = "org.goiaba.boot.shop"
     compileSdk = 35
 
     defaultConfig {
         applicationId = "org.goiaba.boot.shop"
-        minSdk = 35
-        targetSdk = 35
+        minSdk = 33
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
     }

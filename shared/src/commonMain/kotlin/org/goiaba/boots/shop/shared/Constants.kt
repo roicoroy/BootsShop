@@ -1,7 +1,7 @@
 package org.goiaba.boots.shop.shared
 
 object Constants {
-    const val WEB_CLIENT_ID = "868482317172-pid6c8mjapvpaii6o14p6dg48nlnmap2.apps.googleusercontent.com"
+    const val WEB_CLIENT_ID = "801350010963-ggjd3fv3gii5ale2hn6a15ljmkhjja6e.apps.googleusercontent.com"
 
     const val PAYPAL_CLIENT_ID = ""
     const val PAYPAL_SECRET_ID = ""

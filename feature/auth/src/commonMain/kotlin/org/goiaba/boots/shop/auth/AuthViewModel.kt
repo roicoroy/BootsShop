@@ -1,19 +1,14 @@
-package org.goiaba.boots.shop.auth
+package org.goiaba.boot.shop.auth
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.gitlive.firebase.auth.FirebaseUser
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
 import org.goiaba.boots.shop.data.domain.CustomerRepository
 
-//import androidx.lifecycle.viewModelScope
-//import dev.gitlive.firebase.auth.FirebaseUser
-//import kotlinx.coroutines.Dispatchers
-//import kotlinx.coroutines.IO
-//import kotlinx.coroutines.launch
-
-class AuthViewModel(
+class MyAuthViewModel(
     private val customerRepository: CustomerRepository,
 ) : ViewModel() {
     fun createCustomer(

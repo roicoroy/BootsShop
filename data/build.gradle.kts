@@ -48,10 +48,10 @@ kotlin {
 
 android {
     namespace = "org.goiaba.boot.shop.data"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileSdk = 35
     defaultConfig {
-        minSdk = 35
-        targetSdk = 35
+        minSdk = 33
+        targetSdk = 33
     }
 
     compileOptions {

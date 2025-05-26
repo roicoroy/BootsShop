@@ -9,15 +9,23 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import org.koin.compose.koinInject
 import androidx.compose.runtime.getValue
-import org.goiaba.boots.shop.auth.AuthScreen
+import org.goiaba.boot.shop.auth.AuthScreen
 import org.goiaba.boots.shop.shared.navigation.Screen
 
 @Composable
-//startDestination: Screen = Screen.Auth
-fun SetupNavGraph() {
-    AuthScreen()
 
-//    val navController = rememberNavController()
+fun SetupNavGraph(startDestination: Screen = Screen.Auth) {
+
+    val navController = rememberNavController()
+
+    AuthScreen(
+        navigateToHome = {
+            navController.navigate(Screen.HomeGraph) {
+                popUpTo<Screen.Auth> { inclusive = true }
+            }
+        }
+    )
+
 //    NavHost(
 //        navController = navController,
 //        startDestination = startDestination

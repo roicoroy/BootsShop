@@ -51,11 +51,11 @@ kotlin {
 }
 
 android {
-    namespace = "org.goiaba.boot.shop.feature"
+    namespace = "org.goiaba.boot.shop.auth"
     compileSdk = 35
     defaultConfig {
-        minSdk = 35
-        targetSdk = 35
+        minSdk = 33
+        targetSdk = 33
     }
 
     compileOptions {
