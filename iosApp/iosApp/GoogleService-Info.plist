@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>868482317172-fbboh231hlh3s1h17g5q1v475g2ha5c4.apps.googleusercontent.com</string>
+	<string>801350010963-f04rj5bejjh3hfk8g6i9l6m92mt4oa1g.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.868482317172-fbboh231hlh3s1h17g5q1v475g2ha5c4</string>
+	<string>com.googleusercontent.apps.801350010963-f04rj5bejjh3hfk8g6i9l6m92mt4oa1g</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>868482317172-dktupkc025veqvvpgdf66pr0u2duarhp.apps.googleusercontent.com</string>
+	<string>801350010963-3sdipc8brtakfikpb24b06s9c529882s.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBWSfYYWYnp3MFExpfgbFv9PUC5bhqXmeE</string>
+	<string>AIzaSyDHcMkOIDjGL24ymxl6OiLAvzYo98oSj0U</string>
 	<key>GCM_SENDER_ID</key>
-	<string>868482317172</string>
+	<string>801350010963</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.stevdza-san.nutrisport.NutriSport</string>
+	<string>org.goiaba.boot.shop</string>
 	<key>PROJECT_ID</key>
-	<string>nutrisport-455608</string>
+	<string>boots-shop</string>
 	<key>STORAGE_BUCKET</key>
-	<string>nutrisport-455608.firebasestorage.app</string>
+	<string>boots-shop.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:868482317172:ios:9dda209363b925a2050a21</string>
+	<string>1:801350010963:ios:f68701b13e5aa1c5149ea6</string>
 </dict>
 </plist>
