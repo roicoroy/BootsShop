@@ -94,179 +94,179 @@ class CustomerRepositoryImpl : CustomerRepository {
             send(RequestState.Error("Error while reading a Customer information: ${e.message}"))
         }
     }
-
-    override suspend fun updateCustomer(
-        customer: Customer,
-        onSuccess: () -> Unit,
-        onError: (String) -> Unit,
-    ) {
-        try {
-            val userId = getCurrentUserId()
-            if (userId != null) {
-                val firestore = Firebase.firestore
-                val customerCollection = firestore.collection(collectionPath = "customer")
-
-                val existingCustomer = customerCollection
-                    .document(customer.id)
-                    .get()
-                if (existingCustomer.exists) {
-                    customerCollection
-                        .document(customer.id)
-                        .update(
-                            "firstName" to customer.firstName,
-                            "lastName" to customer.lastName,
-                            "city" to customer.city,
-                            "postalCode" to customer.postalCode,
-                            "address" to customer.address,
-                            "phoneNumber" to customer.phoneNumber
-                        )
-                    onSuccess()
-                } else {
-                    onError("Customer not found.")
-                }
-            } else {
-                onError("User is not available.")
-            }
-        } catch (e: Exception) {
-            onError("Error while updating a Customer information: ${e.message}")
-        }
-    }
-
-    override suspend fun addItemToCard(
-        cartItem: CartItem,
-        onSuccess: () -> Unit,
-        onError: (String) -> Unit,
-    ) {
-        try {
-            val currentUserId = getCurrentUserId()
-            if (currentUserId != null) {
-                val database = Firebase.firestore
-                val customerCollection = database.collection(collectionPath = "customer")
-
-                val existingCustomer = customerCollection
-                    .document(currentUserId)
-                    .get()
-                if (existingCustomer.exists) {
-                    val existingCart = existingCustomer.get<List<CartItem>>("cart")
-                    val updatedCart = existingCart + cartItem
-                    customerCollection.document(currentUserId)
-                        .set(
-                            data = mapOf("cart" to updatedCart),
-                            merge = true
-                        )
-                    onSuccess()
-                } else {
-                    onError("Select customer does not exist.")
-                }
-            } else {
-                onError("User is not available.")
-            }
-        } catch (e: Exception) {
-            onError("Error while adding a product to cart: ${e.message}")
-        }
-    }
-
-    override suspend fun updateCartItemQuantity(
-        id: String,
-        quantity: Int,
-        onSuccess: () -> Unit,
-        onError: (String) -> Unit,
-    ) {
-        try {
-            val currentUserId = getCurrentUserId()
-            if (currentUserId != null) {
-                val database = Firebase.firestore
-                val customerCollection = database.collection(collectionPath = "customer")
-
-                val existingCustomer = customerCollection
-                    .document(currentUserId)
-                    .get()
-                if (existingCustomer.exists) {
-                    val existingCart = existingCustomer.get<List<CartItem>>("cart")
-                    val updatedCart = existingCart.map { cartItem ->
-                        if (cartItem.id == id) {
-                            cartItem.copy(quantity = quantity)
-                        } else cartItem
-                    }
-                    customerCollection.document(currentUserId)
-                        .update(data = mapOf("cart" to updatedCart))
-                    onSuccess()
-                } else {
-                    onError("Select customer does not exist.")
-                }
-            } else {
-                onError("User is not available.")
-            }
-        } catch (e: Exception) {
-            onError("Error while updating a product to cart: ${e.message}")
-        }
-    }
-
-    override suspend fun deleteCartItem(
-        id: String,
-        onSuccess: () -> Unit,
-        onError: (String) -> Unit,
-    ) {
-        try {
-            val currentUserId = getCurrentUserId()
-            if (currentUserId != null) {
-                val database = Firebase.firestore
-                val customerCollection = database.collection(collectionPath = "customer")
-
-                val existingCustomer = customerCollection
-                    .document(currentUserId)
-                    .get()
-                if (existingCustomer.exists) {
-                    val existingCart = existingCustomer.get<List<CartItem>>("cart")
-                    val updatedCart = existingCart.filterNot { it.id == id }
-                    customerCollection.document(currentUserId)
-                        .update(data = mapOf("cart" to updatedCart))
-                    onSuccess()
-                } else {
-                    onError("Select customer does not exist.")
-                }
-            } else {
-                onError("User is not available.")
-            }
-        } catch (e: Exception) {
-            onError("Error while deleting a product from cart: ${e.message}")
-        }
-    }
-
-    override suspend fun deleteAllCartItems(
-        onSuccess: () -> Unit,
-        onError: (String) -> Unit,
-    ) {
-        try {
-            val currentUserId = getCurrentUserId()
-            if (currentUserId != null) {
-                val database = Firebase.firestore
-                val customerCollection = database.collection(collectionPath = "customer")
-
-                val existingCustomer = customerCollection
-                    .document(currentUserId)
-                    .get()
-                if (existingCustomer.exists) {
-                    customerCollection.document(currentUserId)
-                        .update(data = mapOf("cart" to emptyList<List<CartItem>>()))
-                    onSuccess()
-                } else {
-                    onError("Select customer does not exist.")
-                }
-            } else {
-                onError("User is not available.")
-            }
-        } catch (e: Exception) {
-            onError("Error while deleting all products from cart: ${e.message}")
-        }
-    }
-
-    override suspend fun signOut(): RequestState<Unit> {
-        return try {
-            Firebase.auth.signOut()
-            RequestState.Success(data = Unit)
-        } catch (e: Exception) {
-            RequestState.Error("Error while signing out: ${e.message}")
-        }
-    }
+//
+//    override suspend fun updateCustomer(
+//        customer: Customer,
+//        onSuccess: () -> Unit,
+//        onError: (String) -> Unit,
+//    ) {
+//        try {
+//            val userId = getCurrentUserId()
+//            if (userId != null) {
+//                val firestore = Firebase.firestore
+//                val customerCollection = firestore.collection(collectionPath = "customer")
+//
+//                val existingCustomer = customerCollection
+//                    .document(customer.id)
+//                    .get()
+//                if (existingCustomer.exists) {
+//                    customerCollection
+//                        .document(customer.id)
+//                        .update(
+//                            "firstName" to customer.firstName,
+//                            "lastName" to customer.lastName,
+//                            "city" to customer.city,
+//                            "postalCode" to customer.postalCode,
+//                            "address" to customer.address,
+//                            "phoneNumber" to customer.phoneNumber
+//                        )
+//                    onSuccess()
+//                } else {
+//                    onError("Customer not found.")
+//                }
+//            } else {
+//                onError("User is not available.")
+//            }
+//        } catch (e: Exception) {
+//            onError("Error while updating a Customer information: ${e.message}")
+//        }
+//    }
+//
+//    override suspend fun addItemToCard(
+//        cartItem: CartItem,
+//        onSuccess: () -> Unit,
+//        onError: (String) -> Unit,
+//    ) {
+//        try {
+//            val currentUserId = getCurrentUserId()
+//            if (currentUserId != null) {
+//                val database = Firebase.firestore
+//                val customerCollection = database.collection(collectionPath = "customer")
+//
+//                val existingCustomer = customerCollection
+//                    .document(currentUserId)
+//                    .get()
+//                if (existingCustomer.exists) {
+//                    val existingCart = existingCustomer.get<List<CartItem>>("cart")
+//                    val updatedCart = existingCart + cartItem
+//                    customerCollection.document(currentUserId)
+//                        .set(
+//                            data = mapOf("cart" to updatedCart),
+//                            merge = true
+//                        )
+//                    onSuccess()
+//                } else {
+//                    onError("Select customer does not exist.")
+//                }
+//            } else {
+//                onError("User is not available.")
+//            }
+//        } catch (e: Exception) {
+//            onError("Error while adding a product to cart: ${e.message}")
+//        }
+//    }
+//
+//    override suspend fun updateCartItemQuantity(
+//        id: String,
+//        quantity: Int,
+//        onSuccess: () -> Unit,
+//        onError: (String) -> Unit,
+//    ) {
+//        try {
+//            val currentUserId = getCurrentUserId()
+//            if (currentUserId != null) {
+//                val database = Firebase.firestore
+//                val customerCollection = database.collection(collectionPath = "customer")
+//
+//                val existingCustomer = customerCollection
+//                    .document(currentUserId)
+//                    .get()
+//                if (existingCustomer.exists) {
+//                    val existingCart = existingCustomer.get<List<CartItem>>("cart")
+//                    val updatedCart = existingCart.map { cartItem ->
+//                        if (cartItem.id == id) {
+//                            cartItem.copy(quantity = quantity)
+//                        } else cartItem
+//                    }
+//                    customerCollection.document(currentUserId)
+//                        .update(data = mapOf("cart" to updatedCart))
+//                    onSuccess()
+//                } else {
+//                    onError("Select customer does not exist.")
+//                }
+//            } else {
+//                onError("User is not available.")
+//            }
+//        } catch (e: Exception) {
+//            onError("Error while updating a product to cart: ${e.message}")
+//        }
+//    }
+//
+//    override suspend fun deleteCartItem(
+//        id: String,
+//        onSuccess: () -> Unit,
+//        onError: (String) -> Unit,
+//    ) {
+//        try {
+//            val currentUserId = getCurrentUserId()
+//            if (currentUserId != null) {
+//                val database = Firebase.firestore
+//                val customerCollection = database.collection(collectionPath = "customer")
+//
+//                val existingCustomer = customerCollection
+//                    .document(currentUserId)
+//                    .get()
+//                if (existingCustomer.exists) {
+//                    val existingCart = existingCustomer.get<List<CartItem>>("cart")
+//                    val updatedCart = existingCart.filterNot { it.id == id }
+//                    customerCollection.document(currentUserId)
+//                        .update(data = mapOf("cart" to updatedCart))
+//                    onSuccess()
+//                } else {
+//                    onError("Select customer does not exist.")
+//                }
+//            } else {
+//                onError("User is not available.")
+//            }
+//        } catch (e: Exception) {
+//            onError("Error while deleting a product from cart: ${e.message}")
+//        }
+//    }
+//
+//    override suspend fun deleteAllCartItems(
+//        onSuccess: () -> Unit,
+//        onError: (String) -> Unit,
+//    ) {
+//        try {
+//            val currentUserId = getCurrentUserId()
+//            if (currentUserId != null) {
+//                val database = Firebase.firestore
+//                val customerCollection = database.collection(collectionPath = "customer")
+//
+//                val existingCustomer = customerCollection
+//                    .document(currentUserId)
+//                    .get()
+//                if (existingCustomer.exists) {
+//                    customerCollection.document(currentUserId)
+//                        .update(data = mapOf("cart" to emptyList<List<CartItem>>()))
+//                    onSuccess()
+//                } else {
+//                    onError("Select customer does not exist.")
+//                }
+//            } else {
+//                onError("User is not available.")
+//            }
+//        } catch (e: Exception) {
+//            onError("Error while deleting all products from cart: ${e.message}")
+//        }
+//    }
+//
+//    override suspend fun signOut(): RequestState<Unit> {
+//        return try {
+//            Firebase.auth.signOut()
+//            RequestState.Success(data = Unit)
+//        } catch (e: Exception) {
+//            RequestState.Error("Error while signing out: ${e.message}")
+//        }
+//    }
 }

@@ -1,6 +1,8 @@
 import UIKit
 import SwiftUI
 import ComposeApp
+import Firebase
+import FirebaseCore
 
 struct ComposeView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {

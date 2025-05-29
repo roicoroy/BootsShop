@@ -52,6 +52,8 @@ kotlin {
 
             api(libs.kmp.notifier)
 
+            implementation(libs.firebase.auth.ktx)
+
             implementation(project(path = ":navigation"))
             implementation(project(path = ":shared"))
             implementation(project(path = ":di"))

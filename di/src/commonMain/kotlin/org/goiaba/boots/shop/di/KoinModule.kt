@@ -19,12 +19,12 @@ import org.koin.dsl.module
 
 val sharedModule = module {
     single<CustomerRepository> { CustomerRepositoryImpl() }
-    single<AdminRepository> { AdminRepositoryImpl() }
-    single<ProductRepository> { ProductRepositoryImpl() }
-    single<OrderRepository> { OrderRepositoryImpl(get()) }
-    single<IntentHandler> { IntentHandler() }
+//    single<AdminRepository> { AdminRepositoryImpl() }
+//    single<ProductRepository> { ProductRepositoryImpl() }
+//    single<OrderRepository> { OrderRepositoryImpl(get()) }
+//    single<IntentHandler> { IntentHandler() }
 //    single<PaypalApi> { PaypalApi() }
-//    viewModelOf(::MyAuthViewModel)
+    viewModelOf(::MyAuthViewModel)
 //    viewModelOf(::HomeGraphViewModel)
 //    viewModelOf(::ProfileViewModel)
 //    viewModelOf(::ManageProductViewModel)

@@ -2,7 +2,7 @@
 <resources>
     <style parent="Theme.SplashScreen" name="Theme.Boots.Splash">
         <item name="windowSplashScreenBackground">#B067E0</item>
-        <item name="postSplashScreenTheme">@android:style/Theme.Material.Light.DarkActionBar</item>
+        <item name="postSplashScreenTheme">@android:style/Theme.Material.Light.NoActionBar</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/cow_splash</item>
     </style>
 </resources>

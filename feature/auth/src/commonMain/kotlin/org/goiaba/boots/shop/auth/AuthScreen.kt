@@ -23,6 +23,7 @@ import com.mmk.kmpauth.firebase.google.GoogleButtonUiContainerFirebase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.goiaba.boot.shop.auth.components.GoogleButton
+//import org.goiaba.boot.shop
 import org.goiaba.boots.shop.shared.Alpha
 import org.goiaba.boots.shop.shared.BebasNeueFont
 import org.goiaba.boots.shop.shared.FontSize
@@ -40,7 +41,7 @@ fun AuthScreen(
     navigateToHome: () -> Unit
 ) {
     val scope = rememberCoroutineScope()
-//    val viewModel = koinViewModel<MyAuthViewModel>()
+    val viewModel = koinViewModel<MyAuthViewModel>()
     val messageBarState = rememberMessageBarState()
     var loadingState by remember { mutableStateOf(false) }
 

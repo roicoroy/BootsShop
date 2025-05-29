@@ -43,6 +43,8 @@ kotlin {
 
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
+//            implementation(libs.koin.androidx.viewmodel) // or the latest version
+
 
             implementation(project(path = ":shared"))
             implementation(project(path = ":data"))

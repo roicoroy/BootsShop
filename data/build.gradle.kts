@@ -42,6 +42,7 @@ kotlin {
             implementation(libs.auth.firebase.kmp)
 
             implementation(project(path = ":shared"))
+//            implementation(project(path = ":feature:auth"))
         }
     }
 }
