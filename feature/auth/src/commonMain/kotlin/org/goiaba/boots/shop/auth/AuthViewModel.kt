@@ -8,20 +8,20 @@ import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
 import org.goiaba.boots.shop.data.domain.CustomerRepository
 
-class MyAuthViewModel(
-    private val customerRepository: CustomerRepository,
+class AuthViewModel(
+//    private val customerRepository: CustomerRepository,
 ) : ViewModel() {
-    fun createCustomer(
-        user: FirebaseUser?,
-        onSuccess: () -> Unit,
-        onError: (String) -> Unit,
-    ) {
-       viewModelScope.launch(Dispatchers.IO) {
-           customerRepository.createCustomer(
-               user = user,
-               onSuccess = onSuccess,
-               onError = onError
-           )
-       }
-    }
+//    fun createCustomer(
+//        user: FirebaseUser?,
+//        onSuccess: () -> Unit,
+//        onError: (String) -> Unit,
+//    ) {
+//       viewModelScope.launch(Dispatchers.IO) {
+//           customerRepository.createCustomer(
+//               user = user,
+//               onSuccess = onSuccess,
+//               onError = onError
+//           )
+//       }
+//    }
 }

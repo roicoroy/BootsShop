@@ -41,7 +41,7 @@ fun AuthScreen(
     navigateToHome: () -> Unit
 ) {
     val scope = rememberCoroutineScope()
-    val viewModel = koinViewModel<MyAuthViewModel>()
+    val viewModel = koinViewModel<AuthViewModel>()
     val messageBarState = rememberMessageBarState()
     var loadingState by remember { mutableStateOf(false) }
 
