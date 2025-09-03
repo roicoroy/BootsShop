@@ -82,7 +82,7 @@ fun AuthScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .alpha(Alpha.HALF),
-                        text = "Sign in to continue..",
+                        text = "Sign in to continue",
                         textAlign = TextAlign.Center,
                         fontSize = FontSize.EXTRA_REGULAR,
                         color = TextPrimary
@@ -91,25 +91,18 @@ fun AuthScreen(
                 GoogleButtonUiContainerFirebase(
                     linkAccount = false,
                     onResult = { result ->
-//                        messageBarState.success("renege")
                         result.onSuccess { user ->
-
-                            val name: String? = user?.email
-
-                                messageBarState.addSuccess(name.toString())
-
-
-//                            viewModel.createCustomer(
-//                                user = user,
-//                                onSuccess = {
-//                                    scope.launch {
-//                                        messageBarState.addSuccess("Authentication successful!")
-//                                        delay(2000)
-//                                        navigateToHome()
-//                                    }
-//                                },
-//                                onError = { message -> messageBarState.addError(message) }
-//                            )
+                            viewModel.createCustomer(
+                                user = user,
+                                onSuccess = {
+                                    scope.launch {
+                                        messageBarState.addSuccess("Authentication successful!")
+                                        delay(2000)
+                                        navigateToHome()
+                                    }
+                                },
+                                onError = { message -> messageBarState.addError(message) }
+                            )
                             loadingState = false
                         }.onFailure { error ->
                             if (error.message?.contains("A network error") == true) {

@@ -1,3 +1,5 @@
+import org.gradle.kotlin.dsl.project
+
 rootProject.name = "BootsShop"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
@@ -28,6 +30,7 @@ dependencyResolutionManagement {
     }
 }
 include(":feature:auth")
+include(":feature:home")
 include(":data")
 include(":di")
 include(":navigation")

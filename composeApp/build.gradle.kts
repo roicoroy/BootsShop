@@ -1,4 +1,3 @@
-import com.android.build.api.dsl.LintOptions
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -12,7 +11,7 @@ plugins {
 kotlin {
     androidTarget {
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_17)
+            jvmTarget.set(JvmTarget.JVM_11)
         }
     }
 
@@ -45,6 +44,8 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
+//            implementation(libs.firebase.common.ktx)
+
             implementation(libs.auth.kmp)
             implementation(libs.firebase.app)
 
@@ -52,34 +53,21 @@ kotlin {
 
             api(libs.kmp.notifier)
 
-            implementation(libs.firebase.auth.ktx)
-
             implementation(project(path = ":navigation"))
             implementation(project(path = ":shared"))
             implementation(project(path = ":di"))
             implementation(project(path = ":data"))
-
-//            implementation(project(path = ":feature:auth"))
         }
     }
 }
 
 android {
-    signingConfigs {
-        getByName("debug") {
-            storeFile = file("/Users/ricardobento/LOCAL/KOTLIN-MULTI/BootsShop/boots_shop.keystore")
-            storePassword = "Rwbento123!"
-            keyAlias = "boots_shop_alias"
-            keyPassword = "Rwbento123!"
-        }
-    }
     namespace = "org.goiaba.boot.shop"
-    compileSdk = 35
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "org.goiaba.boot.shop"
         minSdk = 33
-        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
     }
@@ -99,7 +87,14 @@ android {
     }
 }
 
-dependencies {
-    debugImplementation(compose.uiTooling)
-}
+//dependencies {
+//    implementation(project(":feature:home"))
+//    implementation(project(":data"))
+//    implementation(project(":navigation"))
+//    implementation(project(":di"))
+//    implementation(project(":shared"))
+//    implementation(project(":feature:auth"))
+//    implementation(libs.firebase.common.ktx)
+//    debugImplementation(compose.uiTooling)
+//}
 

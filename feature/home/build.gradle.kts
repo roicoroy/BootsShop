@@ -5,13 +5,12 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-    alias(libs.plugins.serialization)
 }
 
 kotlin {
     androidTarget {
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_17)
+            jvmTarget.set(JvmTarget.JVM_11)
         }
     }
 
@@ -21,7 +20,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "data"
+            baseName = "home"
             isStatic = true
         }
     }
@@ -36,26 +35,31 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.compose.navigation)
 
-            implementation(libs.firebase.firestore)
-            implementation(libs.firebase.storage)
+            implementation(libs.messagebar.kmp)
+
+            implementation(libs.auth.kmp)
             implementation(libs.auth.firebase.kmp)
 
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
+
             implementation(project(path = ":shared"))
-//            implementation(project(path = ":feature:auth"))
+            implementation(project(path = ":data"))
         }
     }
 }
 
 android {
-    namespace = "org.goiaba.boot.shop.data"
-    compileSdk = 35
-    defaultConfig {
-        minSdk = 33
-    }
+    namespace = "org.goiaba.boot.shop.home"
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
 
+    defaultConfig {
+        minSdk = libs.versions.android.minSdk.get().toInt()
+    }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 }
